@@ -41,8 +41,14 @@
     list-style: none;
     text-align: center;
     width: 60vw;
-    justify-content: start;
+    justify-content: end;
     margin-right: 2rem;
+  }
+
+  @media only screen and (max-width: 960px){
+    .nav-menu {
+      justify-content: start;
+    }
   }
   
   .nav-item {

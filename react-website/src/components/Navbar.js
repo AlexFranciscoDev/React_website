@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./Navbar.css";
 import { Button } from './Button';
@@ -40,15 +40,22 @@ function Navbar() {
         }
     }
 
+    /* Renders it one time and is not going to show up anymore */
+    useEffect(() => {
+        showButton()
+    }, []);
+
     window.addEventListener("resize", showButton);
 
     return (
         <div>
           <nav className="navbar">
             <div className="navbar-container">
-                <Link to="/" className="navbar-logo">
+                {/* Logo */}
+                <Link to="/" className="navbar-logo" onClick={ closeMobileMenu }>
                     YEKW <i class="fasfa-guitar-electric"></i>
                 </Link>
+                {/* Icon toggle for the navbar for mobile and version */}
                 <div className="menu-icon" onClick={ handleClick }>
                     <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
                 </div>
@@ -79,6 +86,7 @@ function Navbar() {
                 { button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
             </div>
           </nav>
+          
         </div>
     )
 }
